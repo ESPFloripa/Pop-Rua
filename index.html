@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guia de Saúde: População em Situação de Rua - Florianópolis</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -124,6 +125,19 @@
             justify-content: flex-start;
             text-align: left;
         }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-down {
+            animation: fadeInDown 0.3s ease-out forwards;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -135,6 +149,9 @@
         <div class="container mx-auto max-w-5xl text-center relative z-10">
             <h1 class="text-3xl md:text-4xl font-bold">Guia para Profissionais de Saúde</h1>
             <p class="mt-2 text-lg">Cuidado Integral à População em Situação de Rua em Florianópolis</p>
+            <button id="openModalBtn" class="mt-4 flex items-center justify-center text-lg bg-white/20 backdrop-blur-sm py-2 px-4 rounded-full max-w-xs mx-auto hover:bg-white/30 transition-colors">
+                <i class="fas fa-graduation-cap mr-2"></i>Curso Livre
+            </button>
         </div>
     </header>
 
@@ -150,6 +167,7 @@
                     <li><a href="#rede" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">5. Rede</a></li>
                     <li><a href="#fluxos" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">6. Fluxos</a></li>
                     <li><a href="#documentos" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">7. Documentos</a></li>
+                    <li><a href="#curso-livre" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">8. Curso</a></li>
                 </ul>
             </div>
         </div>
@@ -330,6 +348,23 @@
             </a>
         </section>
 
+        <!-- Seção 8: Curso Livre -->
+        <section id="curso-livre" class="section-card text-center bg-teal-50 border-t-4 border-teal-500">
+            <h2 class="section-title justify-center text-teal-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+                8. Participe do Curso Livre
+            </h2>
+            <p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto">Aprofunde seu conhecimento e obtenha a certificação. Siga os passos abaixo para se inscrever e realizar o teste de aproveitamento.</p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="https://espfloripa.github.io/cursoslivres/" target="_blank" rel="noopener noreferrer" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105 inline-block">
+                    Inscrição para o curso livre
+                </a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfA5W3qrXxdch_JUlHY62LVRQbkwzBqcXbpRh4rxHHriGbpaQ/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105 inline-block">
+                    Teste de aproveitamento
+                </a>
+            </div>
+        </section>
+
     </main>
 
     <!-- Rodapé -->
@@ -338,6 +373,54 @@
         <p>&copy; 2025 Prefeitura Municipal de Florianópolis. Todos os direitos reservados.</p>
     </footer>
 
+    <!-- Modal -->
+    <div id="infoModal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full p-6 relative animate-fade-in-down">
+            <button id="closeModalBtn" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="text-2xl font-bold text-teal-900 mb-4">Instruções do Curso Livre</h3>
+            <div class="text-slate-700">
+                <ol class="list-decimal list-inside space-y-2">
+                    <li>Este Curso Livre é voltado para profissionais de saúde de nível superior e será certificado com a carga horária de 2 horas/aula.</li>
+                    <li>Você deve clicar no botão disponível no fim desta página (ou <a href="https://espfloripa.github.io/cursoslivres/" target="_blank" rel="noopener noreferrer" class="text-teal-600 hover:underline font-semibold">aqui</a>) e preencher todos os campos para se inscrever no curso no mês corrente.</li>
+                    <li>Após a inscrição realizada, você tem até o último dia do mês para responder o teste de aproveitamento disponibilizado no botão no fim da página (não confundir com o Quiz!).</li>
+                    <li>Ao responder o teste de aproveitamento coloque o nome completo e CPF conforme você colocou no link de inscrição.</li>
+                    <li>A nota de corte para aprovação é de 80%.</li>
+                    <li>O teste de aproveitamento só permite uma resposta por participante, caso você não seja aprovado poderá repetir o curso no mês seguinte.</li>
+                    <li>O certificado será disponibilizado até o último dia útil do mês seguinte à finalização do curso.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const infoModal = document.getElementById('infoModal');
+    
+        openModalBtn.addEventListener('click', () => {
+            infoModal.classList.remove('hidden');
+            infoModal.classList.add('flex');
+        });
+    
+        closeModalBtn.addEventListener('click', () => {
+            infoModal.classList.add('hidden');
+            infoModal.classList.remove('flex');
+        });
+    
+        // Close modal when clicking outside of it
+        infoModal.addEventListener('click', (event) => {
+            if (event.target === infoModal) {
+                infoModal.classList.add('hidden');
+                infoModal.classList.remove('flex');
+            }
+        });
+    </script>
+
 </body>
 </html>
+
 
