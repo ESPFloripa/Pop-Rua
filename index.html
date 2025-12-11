@@ -13,7 +13,7 @@
         }
         /* Adiciona uma margem de rolagem no topo das seções para compensar a nav-bar fixa */
         section[id] {
-            scroll-margin-top: 56px;
+            scroll-margin-top: 80px; /* Aumentado um pouco para dar respiro */
         }
         .section-card {
             background-color: white;
@@ -53,20 +53,35 @@
             cursor: pointer;
             font-weight: 500;
             color: #1e3a8a;
-            padding: 0.5rem;
+            padding: 0.75rem;
+            background-color: #f8fafc;
             border-radius: 0.5rem;
-            transition: background-color 0.2s;
+            transition: all 0.2s;
+            list-style: none; /* Remove seta padrão em alguns browsers */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        details > summary::after {
+            content: '+';
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #3b82f6;
+        }
+        details[open] > summary::after {
+            content: '-';
         }
         details > summary:hover {
             background-color: #eef2ff;
         }
         details[open] > summary {
             background-color: #e0e7ff;
+            margin-bottom: 0.5rem;
         }
         /* Estilos para os cards interativos (flip cards) */
         .flip-card {
             background-color: transparent;
-            height: 350px;
+            height: 400px; /* Altura ajustada para caber mais texto */
             perspective: 1000px;
             cursor: pointer;
         }
@@ -100,11 +115,11 @@
         .flip-card-front {
             color: white;
             text-align: center;
-            position: relative; /* Para o overlay */
+            position: relative;
             background-image: url('https://i.imgur.com/F6y8Yo5.jpeg');
             background-size: cover;
             background-position: center;
-            overflow: hidden; /* Garante que o overlay fique dentro das bordas arredondadas */
+            overflow: hidden;
         }
         .flip-card-front.bg-2 {
             background-image: url('https://i.imgur.com/TsKHoKx.jpeg');
@@ -114,16 +129,18 @@
             position: absolute;
             inset: 0;
             background-color: #1e40af;
-            opacity: 0.6; /* Diminuído de 0.8 para 0.6 */
+            opacity: 0.7;
         }
         .flip-card-front > * {
-            position: relative; /* Coloca o texto acima do overlay */
+            position: relative;
         }
         .flip-card-back {
             transform: rotateY(180deg);
+            background-color: white;
             align-items: flex-start;
             justify-content: flex-start;
             text-align: left;
+            overflow-y: auto; /* Permite rolagem se o texto for muito longo */
         }
         .video-container {
             position: relative;
@@ -141,14 +158,8 @@
             height: 100%;
         }
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .animate-fade-in-down {
             animation: fadeInDown 0.3s ease-out forwards;
@@ -159,7 +170,6 @@
 
     <!-- Cabeçalho -->
     <header class="text-white py-20 px-6 shadow-md relative" style="background-image: url('https://i.imgur.com/sjrBK8l.jpeg'); background-size: cover; background-position: bottom;">
-        <!-- Overlay para melhorar a legibilidade do texto -->
         <div class="absolute inset-0 bg-blue-900 opacity-60"></div>
         <div class="container mx-auto max-w-5xl text-center relative z-10">
             <h1 class="text-3xl md:text-4xl font-bold">Guia para Profissionais de Saúde</h1>
@@ -175,7 +185,7 @@
         </div>
     </header>
 
-    <!-- Seção de Início do Curso -->
+    <!-- Seção de Início -->
     <div id="start-section" class="text-center py-10 px-4 bg-gray-50">
         <p class="mb-4 text-slate-600 font-semibold">Antes de iniciar o curso leia as instruções e faça a sua inscrição acima!</p>
         <button id="startButton" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-12 rounded-full transition-transform transform hover:scale-105 shadow-lg">
@@ -184,7 +194,7 @@
     </div>
 
     <div id="course-content" class="hidden">
-        <!-- Barra de Navegação / Índice -->
+        <!-- Barra de Navegação -->
         <nav class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-20">
             <div class="container mx-auto max-w-5xl px-4">
                 <div class="flex items-center justify-center overflow-x-auto">
@@ -195,222 +205,438 @@
                         <li><a href="#cnar" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">4. CnaR</a></li>
                         <li><a href="#rede" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">5. Rede</a></li>
                         <li><a href="#fluxos" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">6. Fluxos</a></li>
-                        <li><a href="#documentos" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">7. Documentos</a></li>
+                        <li><a href="#documentos" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">7. Cadastro</a></li>
                         <li><a href="#curso-livre" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">8. Teste</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-
         <!-- Conteúdo Principal -->
         <main class="container mx-auto max-w-5xl p-4 md:p-6">
 
-            <!-- Seção do Vídeo -->
+            <!-- Vídeo Introdutório e Infográficos -->
             <section class="section-card">
                 <h2 class="section-title">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                    </svg>
-                    Atenção Integral às Pessoas em Situação de Rua
+                    <i class="fas fa-video text-blue-800"></i>
+                    Visão Geral: Assista ao vídeo e veja os Infográficos
                 </h2>
-                <div class="video-container">
+                <div class="video-container mb-8">
                     <iframe 
-                        src="https://www.youtube.com/embed/GKxrd1EHP-k" 
+                        src="https://www.youtube.com/embed/zjIx67ZtgJk" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
                     </iframe>
                 </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex flex-col items-center group">
+                        <h3 class="font-semibold text-gray-700 mb-2">Infográfico 1 <span class="text-xs font-normal text-blue-600">(Clique para ampliar)</span></h3>
+                        <img 
+                            src="https://i.imgur.com/kzhsjVm.png" 
+                            alt="Infográfico 1 - População em Situação de Rua" 
+                            class="w-full rounded-lg shadow-md border hover:scale-105 transition-transform duration-300 cursor-pointer"
+                            onclick="openFullscreen(this.src)"
+                        >
+                    </div>
+                    <div class="flex flex-col items-center group">
+                        <h3 class="font-semibold text-gray-700 mb-2">Infográfico 2 <span class="text-xs font-normal text-blue-600">(Clique para ampliar)</span></h3>
+                        <img 
+                            src="https://i.imgur.com/YtBk0u7.png" 
+                            alt="Infográfico 2 - Orientações de Saúde" 
+                            class="w-full rounded-lg shadow-md border hover:scale-105 transition-transform duration-300 cursor-pointer"
+                            onclick="openFullscreen(this.src)"
+                        >
+                    </div>
+                </div>
+
+                <div class="flex justify-center mt-8">
+                    <a href="https://drive.google.com/file/d/12SJHJ9HZwPlP5fcvGirTPo5iWFs2kaNf/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-all hover:scale-105 shadow-md text-center">
+                        <i class="fas fa-file-pdf mr-2"></i> Documento: Atenção Integral à Saúde das Pessoas em Situação de Rua
+                    </a>
+                </div>
             </section>
             
-            <!-- Seção 1: Acolhimento e Acesso à Rede -->
+            <!-- DIVISOR: Detalhamento -->
+            <div class="flex items-center my-10">
+                <div class="flex-grow border-t-2 border-blue-200"></div>
+                <span class="flex-shrink-0 mx-4 text-blue-800 font-bold text-xl uppercase tracking-widest">
+                    <i class="fas fa-list-ul mr-2"></i>Detalhamento
+                </span>
+                <div class="flex-grow border-t-2 border-blue-200"></div>
+            </div>
+
+            <!-- SEÇÃO 1: Acolhimento -->
             <section id="acolhimento" class="section-card">
                 <h2 class="section-title">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                    1. Acolhimento e Acesso à Rede de Saúde
+                    <i class="fas fa-hand-holding-heart text-blue-600"></i>
+                    1. Acolhimento
                 </h2>
-                <p class="mb-4">O acesso aos serviços de saúde é um direito de todos. O cadastro é o primeiro passo para o vínculo e deve ser facilitado.</p>
-                <div class="bg-blue-50 p-4 rounded-lg mb-4">
-                    <p class="font-bold text-blue-800">Princípio Fundamental:</p>
-                    <p class="text-gray-700">Conforme legislação do SUS e o Ministério da Saúde, a responsabilidade pela atenção à saúde da população em situação de rua é de todo e qualquer profissional do Sistema Único de Saúde. O atendimento integral deve ser ofertado independentemente da apresentação de documentos ou comprovante de residência.</p>
+                <p class="mb-4 text-gray-700">As pessoas em situação de rua são definidas como um grupo populacional heterogêneo que possui em comum a pobreza extrema, os vínculos familiares interrompidos ou fragilizados e a inexistência de moradia convencional regular. Utilizam logradouros públicos e áreas degradadas como espaço de moradia e sustento, bem como unidades de acolhimento.</p>
+                
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                    <p class="font-semibold text-blue-900">Princípio Fundamental de Acesso</p>
+                    <p class="text-gray-700 text-sm mt-1">A atenção integral à saúde deve ser ofertada <strong>independentemente da apresentação de documentos</strong> que comprovem domicílio, inscrição no SUS ou posse do Cartão Nacional de Saúde.</p>
                 </div>
-                <details class="space-y-3 bg-gray-50 p-4 rounded-lg">
-                    <summary>Passo a passo para o Cadastro do Usuário</summary>
-                    <ul class="list-disc list-inside space-y-2 mt-2 text-gray-700">
-                        <li><strong>Responsabilidade:</strong> Todo profissional do SUS deve acolher e atender, independentemente de documentação ou comprovante de residência.</li>
-                        <li><strong>Identificação:</strong> Pergunte como a pessoa gostaria de ser chamada. Preencha "Nome" e "Nome Social", se aplicável. No sistema, selecione a opção que indica que a pessoa está em situação de rua.</li>
-                        <li><strong>Endereço (Logradouro):</strong> Registre a rua e o número aproximado do local onde a pessoa está ou permanece com maior frequência, com pontos de referência.</li>
-                        <li><strong>Vínculo de Equipe:</strong> Vincule o usuário à equipe que realiza o primeiro atendimento. Converse sobre a melhor equipe de acompanhamento, considerando o vínculo e o local de permanência.</li>
-                        <li><strong>Contato:</strong> Anote um número de celular, se houver. Caso contrário, pactue formas de comunicação, como retornos periódicos ao Centro de Saúde (CS).</li>
-                        <li><strong>Pessoas Abrigadas:</strong> O cadastro segue a lógica de domiciliados, usando o endereço do abrigo.</li>
-                    </ul>
-                </details>
+
+                <div class="grid md:grid-cols-2 gap-4 mb-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-blue-800 mb-2"><i class="fas fa-clinic-medical mr-2"></i>Responsabilidade do CS</h3>
+                        <p class="text-sm text-gray-600">Os Centros de Saúde são responsáveis pela população em situação de rua do território adscrito, devendo oferecer acolhimento e atendimento às pessoas que procuram espontaneamente o serviço.</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h3 class="font-semibold text-blue-800 mb-2"><i class="fas fa-notes-medical mr-2"></i>Especificidades de Saúde</h3>
+                        <p class="text-sm text-gray-600">Maior frequência de problemas nos pés, infestações (escabiose/piolho), tuberculose, ISTs/HIV, gravidez de alto risco, doenças crônicas, saúde mental e uso de álcool/drogas.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-500 italic">Nota: O atendimento deve considerar a oferta de testes rápidos e coleta de escarro quando indicado para garantir a integralidade do cuidado.</p>
             </section>
 
-            <!-- Seção 2: Manejo de Condições de Saúde Específicas -->
+            <!-- SEÇÃO 2: Manejo -->
             <section id="manejo" class="section-card">
                 <h2 class="section-title">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.7-1.44 2.1 4.2 1.4-2.56 1.05 1.81L17.5 12h3.28"/></svg>
-                    2. Manejo de Condições de Saúde Específicas
+                    <i class="fas fa-stethoscope text-green-600"></i>
+                    2. Manejo de Condições de Saúde
                 </h2>
-                <p class="mb-4">As condições de vida na rua geram especificidades em saúde. Os problemas clínicos mais frequentes, segundo o Ministério da Saúde, são: problemas nos pés, infestações (escabiose/piolho), tuberculose, IST/HIV, gravidez de alto risco, doenças crônicas, saúde mental e uso prejudicial de álcool e outras drogas.</p>
-                <div class="space-y-4">
-                    <details class="bg-gray-50 p-4 rounded-lg">
+                <p class="mb-4 text-gray-600">Orientações para o manejo das condições mais frequentes:</p>
+                
+                <div class="space-y-3">
+                    <details>
                         <summary>Tuberculose (TB)</summary>
-                        <p class="mt-2 text-gray-700">A população em situação de rua é altamente vulnerável. Ofereça a coleta de escarro sempre que houver tosse. Para acesso aos abrigos municipais (Casa de Apoio, Casa de Passagem, Albergue), é um pré-requisito apresentar resultado negativo de baciloscopia (exame de escarro) dos últimos 30 dias. O Tratamento Diretamente Observado (TDO) é uma estratégia importante para garantir a adesão.</p>
+                        <div class="p-4 text-gray-700 border-t border-gray-100">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><strong>Coleta:</strong> Realizar coleta de escarro sempre que houver tosse, independente do tempo.</li>
+                                <li><strong>Investigação:</strong> Realizar teste rápido de HIV (alta prevalência de coinfecção).</li>
+                                <li><strong>Acesso a Abrigos:</strong> Exige resultado negativo de baciloscopia dos últimos 30 dias.</li>
+                                <li><strong>Tratamento:</strong> Em caso de diagnóstico, orientar tratamento com equipe de referência. Se houver abandono, discutir com a Equipe do Consultório na Rua (eCR).</li>
+                            </ul>
+                        </div>
                     </details>
-                    <details class="bg-gray-50 p-4 rounded-lg">
-                        <summary>IST, HIV e AIDS</summary>
-                        <p class="mt-2 text-gray-700">Ofereça testagem rápida ou sorologias, facilite o acesso a preservativos e verifique o histórico de tratamento. Em caso de diagnóstico, ofereça acolhimento e acompanhamento.</p>
+
+                    <details>
+                        <summary>ISTs, HIV e AIDS</summary>
+                        <div class="p-4 text-gray-700 border-t border-gray-100">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li>Buscar informações sobre orientação sexual, parcerias e uso de preservativos.</li>
+                                <li>Oferecer testes rápidos ou sorologias quando indicado.</li>
+                                <li>Facilitar vacinação de Hepatite B.</li>
+                                <li>Verificar histórico de IST/HIV e tratamentos anteriores.</li>
+                            </ul>
+                        </div>
                     </details>
-                    <details class="bg-gray-50 p-4 rounded-lg">
-                        <summary>Planejamento Familiar e Saúde Mental</summary>
-                        <p class="mt-2 text-gray-700">Ofereça testes de gravidez e oriente sobre métodos contraceptivos. Para saúde mental e uso de substâncias, ofereça escuta qualificada e, se for desejo do usuário, encaminhe para acompanhamento no CS ou CAPS AD.</p>
+
+                    <details>
+                        <summary>Planejamento Familiar</summary>
+                        <div class="p-4 text-gray-700 border-t border-gray-100">
+                            <p>Para pessoas com útero, oferecer teste rápido de gravidez e orientar sobre métodos contraceptivos. Em caso de gravidez, vincular ao pré-natal com a equipe de referência.</p>
+                        </div>
                     </details>
+
+                    <details>
+                        <summary>Uso prejudicial de álcool e outras drogas</summary>
+                        <div class="p-4 text-gray-700 border-t border-gray-100">
+                            <p>Investigar o uso nos atendimentos. A abordagem pode envolver:</p>
+                            <ul class="list-disc list-inside mt-2">
+                                <li>Acompanhamento no CS com equipe multiprofissional.</li>
+                                <li>Encaminhamento ao CAPS AD.</li>
+                                <li>Avaliação para internação quando necessário.</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Doenças Infectocontagiosas (Pele)</summary>
+                        <div class="p-4 text-gray-700 border-t border-gray-100">
+                            <p>Ao notar sinais de lesões de pele ou coceira, avaliar escabiose ou piolho. Oferecer tratamento imediato no CS e orientar sobre medidas de higiene e isolamento se necessário.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Saúde Bucal</summary>
+                        <div class="p-4 text-gray-700 border-t border-gray-100">
+                            <p>Oferecer avaliação odontológica, especialmente se houver dor, dificuldade de alimentação ou alterações na face. Fornecer kit de higiene (escova/pasta) quando disponível.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Manejo de Medicações</summary>
+                        <div class="p-4 text-gray-700 border-t border-gray-100">
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><strong>Sem documento:</strong> Um B.O. pode ser usado para retirada de medicação controlada.</li>
+                                <li><strong>Retirada por terceiros:</strong> Profissional de saúde ou acompanhante com documento pode retirar.</li>
+                                <li><strong>Adesão:</strong> Usar Terapia Diretamente Observada (TDO), fracionamento ou entrega semanal/quinzenal.</li>
+                                <li><strong>HIV:</strong> TARV Delivery disponível para entrega no CS de referência.</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <a href="https://drive.google.com/file/d/1a4xe1w2sK1XiJv-x0IPulqB1JI2odsO6/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-full transition-all hover:scale-105 shadow-md text-center leading-tight">
+                        <i class="fas fa-file-pdf mr-2"></i> Estratégias de uso e dispensação de medicações para as pessoas em situação de rua
+                    </a>
                 </div>
             </section>
 
-            <!-- Seção 3: Fluxo para Isolamento -->
-            <section id="isolamento" class="section-card border-l-4 border-red-500">
-                <h2 class="section-title text-red-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m15.5 8.5-7 7"/><path d="m8.5 8.5 7 7"/></svg>
-                    3. Fluxo para Isolamento (Doenças Infectocontagiosas)
+            <!-- SEÇÃO 3: Isolamento -->
+            <section id="isolamento" class="section-card border-l-4 border-red-400">
+                <h2 class="section-title text-red-700">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    3. Isolamento
                 </h2>
-                <p class="mb-4">Para casos suspeitos ou confirmados de doenças como COVID-19, TB, Monkeypox, etc., que exigem isolamento, siga o fluxo abaixo.</p>
-                <div class="bg-red-50 p-4 rounded-lg space-y-2">
-                    <p><strong>1. Avaliação e Vaga (Primeiro Passo):</strong> Após avaliação no CS/UPA/CAPS e concordância do usuário, o primeiro passo é avaliar a disponibilidade de vaga no Hotel 2S, contatando a gerência da Alta Complexidade da Assistência Social pelo <strong>Telefone/WhatsApp: (48) 98434-3107</strong>.</p>
-                    <p><strong>2. Encaminhamento:</strong> Preencha e envie o <a href="https://docs.google.com/document/d/1zP4Woe-a4PkfRnvg7uss6e6lNohnHeP6Z2O-pTczoxE/edit?usp=drive_link" target="_blank" class="text-blue-600 underline font-semibold">Formulário de Solicitação de Autorização</a>.</p>
-                    <p><strong>3. Transporte:</strong> Acione a Logística da SMS pelos telefones 3239-1520 / 3239-1541.</p>
-                    <p><strong>4. Comunicação:</strong> Após o encaminhamento do paciente, envie uma cópia do formulário por e-mail para a equipe do Consultório na Rua para que realizem o monitoramento: <strong>consultorionaruafloripa@gmail.com</strong>.</p>
-                    <p class="text-sm mt-2"><strong>Atenção:</strong> O usuário deve ter condições de autocuidado, pois o hotel não possui equipe de saúde. Se não houver vaga, contate a Vigilância Epidemiológica (3212-3910) para avaliar internação social.</p>
+                <p class="mb-4">Necessário em situações de doenças infectocontagiosas, especialmente Tuberculose.</p>
+                
+                <div class="grid gap-4 md:grid-cols-3">
+                    <div class="bg-red-50 p-4 rounded text-center">
+                        <i class="fas fa-head-side-mask text-3xl text-red-400 mb-2"></i>
+                        <h3 class="font-bold text-red-800">Prevenção</h3>
+                        <p class="text-sm text-red-700">Orientar sobre isolamento social e uso de máscara durante período de transmissão.</p>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded text-center">
+                        <i class="fas fa-file-medical text-3xl text-red-400 mb-2"></i>
+                        <h3 class="font-bold text-red-800">Abrigos</h3>
+                        <p class="text-sm text-red-700">Exigem baciloscopia negativa dos últimos 30 dias para entrada.</p>
+                    </div>
+                    <div class="bg-red-50 p-4 rounded text-center">
+                        <i class="fas fa-bed text-3xl text-red-400 mb-2"></i>
+                        <h3 class="font-bold text-red-800">Centro POP</h3>
+                        <p class="text-sm text-red-700">Deve ser buscado para direcionamento a serviços com local adequado para isolamento.</p>
+                    </div>
                 </div>
             </section>
-            
-            <!-- Seção 4: Consultório na Rua (CnaR) -->
+
+            <!-- SEÇÃO 4: CnaR -->
             <section id="cnar" class="section-card">
                 <h2 class="section-title">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-                    4. O Consultório na Rua (CnaR)
+                    <i class="fas fa-ambulance text-teal-600"></i>
+                    4. Consultório na Rua (CnaR)
                 </h2>
-                <p class="mb-4">A equipe do Consultório na Rua (eCR) desenvolve ações de Atenção Primária de forma itinerante. Uma de suas atividades específicas e regulares é a realização de atendimentos em uma Unidade Móvel (trailer) nos bairros Centro e Canasvieiras.</p>
+                <p class="mb-4">Equipes itinerantes de Atenção Básica que atuam em ruas, praças e espaços públicos, compostas por médicos, enfermeiras, assistente social, psicóloga e técnicos.</p>
+                
+                <h3 class="font-bold text-lg mb-2 text-teal-800">Ações Realizadas</h3>
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm">Busca Ativa</span>
+                    <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm">Acompanhamento Longitudinal</span>
+                    <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm">Consultas</span>
+                    <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm">Curativos</span>
+                    <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm">Testes Rápidos</span>
+                    <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm">Redução de Danos</span>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4 mb-8">
+                     <a href="https://drive.google.com/drive/folders/1sJVpyJeFWVbuW12N4BQm3i_TxNEq5960?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2 px-6 rounded-full transition-all hover:scale-105 shadow-md">
+                        <i class="fab fa-google-drive mr-2"></i> Acessar Materiais do CnaR
+                    </a>
+                    <a href="https://drive.google.com/file/d/1i9cPZTxrQ9LgPZBSXMv5mbWJhD21OS_D/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-2 px-6 rounded-full transition-all hover:scale-105 shadow-md">
+                        <i class="fas fa-gavel mr-2"></i> Legislação eCR
+                    </a>
+                </div>
+
                 <div class="grid md:grid-cols-2 gap-6">
-                    <!-- Card 1: Quando Acionar -->
+                    <!-- Card Quando Acionar -->
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
-                                <h3 class="font-semibold text-xl mb-2">Quando Acionar a eCR?</h3>
-                                <p class="text-sm font-light">(Passe o mouse para ver os detalhes)</p>
+                                <h3 class="font-bold text-2xl mb-2">Quando Acionar?</h3>
+                                <p class="text-sm opacity-90">(Passe o mouse)</p>
                             </div>
-                            <div class="flip-card-back bg-blue-50">
-                                <h3 class="font-semibold text-lg text-blue-900 mb-3">Quando Acionar a eCR?</h3>
-                                <ul class="list-disc list-inside space-y-2 text-gray-700 text-sm">
-                                    <li>Dificuldade de vinculação do usuário ao serviço.</li>
-                                    <li>Necessidade de busca ativa, após esgotados os recursos do CS.</li>
-                                    <li>Dificuldade de manejo ou dúvidas sobre a população.</li>
-                                    <li>Acompanhamento em exames externos (especialmente sem documento).</li>
+                            <div class="flip-card-back bg-teal-50 p-6">
+                                <h3 class="font-bold text-teal-900 text-lg mb-3">Indicações:</h3>
+                                <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
+                                    <li>Dificuldade de vinculação ao serviço.</li>
+                                    <li>Necessidade de busca ativa esgotada pela equipe local.</li>
+                                    <li>Dúvidas sobre manejo ou especificidades.</li>
+                                    <li>Acompanhamento para exames sem documento.</li>
                                     <li>Discussão de casos e compartilhamento de cuidado.</li>
-                                    <li>Dúvidas sobre a rede intersetorial (abrigos, documentação, etc).</li>
+                                    <li>Dúvidas sobre rede intersetorial.</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Card 2: Como Acionar -->
+                    <!-- Card Como Acionar -->
                     <div class="flip-card">
                         <div class="flip-card-inner">
                             <div class="flip-card-front bg-2">
-                                <h3 class="font-semibold text-xl mb-2">Como Acionar a eCR?</h3>
-                                <p class="text-sm font-light">(Passe o mouse para ver os detalhes)</p>
+                                <h3 class="font-bold text-2xl mb-2">Como Acionar?</h3>
+                                <p class="text-sm opacity-90">(Passe o mouse)</p>
                             </div>
-                            <div class="flip-card-back bg-green-50">
-                                <h3 class="font-semibold text-lg text-green-900 mb-3">Como Acionar a eCR?</h3>
-                                <div class="space-y-2 text-sm w-full">
-                                    <p><strong>E-mail:</strong><br><a href="mailto:consultorionaruafloripa@gmail.com" class="font-mono text-green-800 break-all">consultorionaruafloripa@gmail.com</a></p>
-                                    <p class="text-xs text-gray-600">(Resposta em até 72 horas)</p>
-                                    <p class="font-semibold mt-2">Informações essenciais no e-mail:</p>
-                                    <ul class="list-disc list-inside space-y-1 text-gray-700">
-                                        <li>Nome completo, apelido, data de nascimento, nome da mãe.</li>
-                                        <li>Características físicas e locais de circulação.</li>
-                                        <li>Especificação clara da demanda.</li>
-                                    </ul>
-                                </div>
+                            <div class="flip-card-back bg-blue-50 p-6">
+                                <h3 class="font-bold text-blue-900 text-lg mb-3">Contato:</h3>
+                                <p class="text-sm mb-4"><strong>E-mail ou Telefone</strong> (Resposta até 72h).</p>
+                                <p class="font-semibold text-sm mb-2">Informações necessárias no e-mail:</p>
+                                <ul class="list-disc list-inside space-y-1 text-sm text-gray-700">
+                                    <li>Nome completo e apelido.</li>
+                                    <li>Data de nascimento e nome da mãe.</li>
+                                    <li>Características físicas.</li>
+                                    <li>Locais de circulação.</li>
+                                    <li>Descrição detalhada da demanda.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            
-            <!-- Seção 5: Rede Socioassistencial -->
+
+            <!-- SEÇÃO 5: Rede Socioassistencial -->
             <section id="rede" class="section-card">
                 <h2 class="section-title">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><path d="M12 20h4"/><path d="M12 20H8"/><path d="M20 10V4a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6"/><path d="M4 10h16"/></svg>
-                    5. Articulação com a Rede Socioassistencial
+                    <i class="fas fa-network-wired text-purple-600"></i>
+                    5. Rede Socioassistencial
                 </h2>
                 <div class="space-y-4">
-                     <details class="bg-gray-50 p-4 rounded-lg">
-                        <summary>Centro POP (Porta de Entrada)</summary>
-                         <p class="mt-2 text-gray-700">Oferece atendimento socioassistencial, acesso a benefícios e encaminhamento para abrigos.<br>
-                         <strong>Endereço:</strong> Rua General Bittencourt, 239, Centro.<br>
-                         <strong>Contato:</strong> 4042-3944 / 99200-9941 (WhatsApp).</p>
+                    <details>
+                        <summary>Centro POP</summary>
+                        <div class="p-4 bg-purple-50 rounded-b text-gray-700">
+                            <p>Oferece atendimento socioassistencial, apoio para documentos, benefícios sociais, CadÚnico e encaminhamento para abrigos. Acesso por demanda espontânea ou encaminhamento.</p>
+                        </div>
                     </details>
-                    <details class="bg-gray-50 p-4 rounded-lg">
-                        <summary>Serviços de Acolhimento (Abrigos)</summary>
-                         <p class="mt-2 text-gray-700">O acesso é via encaminhamento do Centro POP e exige baciloscopia negativa recente. Inclui a Casa de Apoio (Continente e Centro), Casa de Passagem e Albergue Noturno.</p>
+                    
+                    <details>
+                        <summary>Serviço de Abordagem Social</summary>
+                        <div class="p-4 bg-purple-50 rounded-b text-gray-700">
+                            <p>Atua <em>in loco</em> nas regiões de maior concentração, oferecendo encaminhamento para a rede.</p>
+                        </div>
                     </details>
-                     <details class="bg-gray-50 p-4 rounded-lg">
+                    
+                    <details>
+                        <summary>Abrigos Municipais (24h)</summary>
+                        <div class="p-4 bg-purple-50 rounded-b text-gray-700">
+                            <p>Incluem: <strong>Casa de Apoio (Continente e Centro)</strong> e <strong>Casa de Passagem</strong>.</p>
+                            <p class="text-sm mt-2 text-red-600 font-bold">*Todos exigem baciloscopia negativa dos últimos 30 dias.</p>
+                        </div>
+                    </details>
+
+                    <details>
                         <summary>Passarela da Cidadania</summary>
-                         <p class="mt-2 text-gray-700">Oferece abrigo e pernoite. O acesso às vagas de pernoite é por demanda espontânea (fila na abertura do portão às 19h). Também possui Centro de Convivência Dia para alimentação e higiene.<br>
-                         <strong>Endereço:</strong> Av. Gustavo Richard, 5000, Centro (ao lado do sambódromo).</p>
+                        <div class="p-4 bg-purple-50 rounded-b text-gray-700">
+                            <p>Oferece pernoite, alimentação, higiene, lavanderia e cursos. Conta com equipe multiprofissional e serviço ambulatorial de saúde.</p>
+                        </div>
+                    </details>
+
+                    <details>
+                        <summary>Outros Equipamentos</summary>
+                        <div class="p-4 bg-purple-50 rounded-b text-gray-700">
+                            <ul class="list-disc list-inside">
+                                <li><strong>Albergue Noturno Manuel Galdino Vieira:</strong> Pernoite, banho e refeições.</li>
+                                <li><strong>Hotel 2S:</strong> Abrigo emergencial para mulheres com crianças.</li>
+                            </ul>
+                        </div>
                     </details>
                 </div>
-            </section>
-            
-            <!-- Seção 6: Fluxos e Situações Especiais -->
-            <section id="fluxos" class="section-card">
-                <h2 class="section-title">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    6. Fluxos e Situações Especiais
-                </h2>
-                <div class="space-y-4">
-                    <details class="bg-gray-50 p-4 rounded-lg">
-                        <summary>Dispensação de Medicamentos e Transporte</summary>
-                        <ul class="list-disc list-inside space-y-2 mt-2 text-gray-700">
-                            <li><strong>Medicamentos de uso contínuo:</strong> Para evitar perda ou descontinuidade, uma estratégia recomendada é fracionar a entrega da medicação, pactuando retiradas semanais ou quinzenais com a equipe do CS.</li>
-                            <li><strong>Transporte para Saúde (UPA, Exames):</strong> Acionar a Logística da SMS (3239-1520).</li>
-                            <li><strong>Transporte Socioassistencial (Abrigo):</strong> Acionar o Serviço de Resgate Social (48) 99182-6870 / 99169-3044.</li>
-                            <li><strong>Emergências:</strong> Acionar o SAMU (192).</li>
-                        </ul>
-                    </details>
-                    <details class="bg-gray-50 p-4 rounded-lg">
-                        <summary>Aviso de Exames e Consultas</summary>
-                         <p class="mt-2 text-gray-700">É responsabilidade do CS avisar o usuário. Após esgotar tentativas de contato (telefone, busca ativa no território), o próximo passo é enviar um e-mail padronizado para a rede de serviços da Pop Rua (CnaR, Centro POP, abrigos, etc.) solicitando apoio na busca. Para isso, é preciso <a href="https://drive.google.com/file/d/1DqW4e_knj50_HbnOQGPejlGlJ1hABHKR/view?usp=drive_link" target="_blank" class="text-blue-600 underline font-semibold">consultar a lista de e-mails neste link</a>.</p>
-                    </details>
+
+                <div class="mt-8 text-center">
+                    <p class="text-gray-700 font-medium mb-3">Acesse aqui as informações detalhadas:</p>
+                    <a href="https://drive.google.com/file/d/1EV0F4qkJ6bIKCjJBWxCv0uFo_oIFmmVQ/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-6 rounded-full transition-all hover:scale-105 shadow-md">
+                        <i class="fas fa-file-alt mr-2"></i> Documento: Rede Socioassistencial
+                    </a>
                 </div>
-            </section>
-            
-            <!-- Seção 7: Documentos e Legislação -->
-            <section id="documentos" class="section-card text-center bg-blue-50">
-                <h2 class="section-title justify-center">
-                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                    7. Documentos e Legislação de Referência
-                </h2>
-                <p class="mb-4">Para aprofundar seu conhecimento, acesse a pasta com todos os documentos originais, fluxos e legislações.</p>
-                <a href="https://drive.google.com/drive/folders/1FdBv7oDRrMhy2vjfaRl4slMH2SBSt21z" target="_blank" class="link-button">
-                    Acessar Documentos no Drive
-                </a>
             </section>
 
-            <!-- Seção 8: Teste de Aproveitamento -->
+            <!-- SEÇÃO 6: Fluxos -->
+            <section id="fluxos" class="section-card">
+                <h2 class="section-title">
+                    <i class="fas fa-exchange-alt text-orange-500"></i>
+                    6. Fluxos de Exames, Consultas e Transporte
+                </h2>
+                
+                <div class="mb-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
+                        <h3 class="font-bold text-lg text-gray-800">Exames e Consultas</h3>
+                        <a href="https://drive.google.com/file/d/1k2o4cKBfH-YBH0wYEWU8n6pUJ8KDAA5o/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2 px-4 rounded-full transition-all hover:scale-105 shadow-md text-center">
+                            <i class="fas fa-file-pdf mr-2"></i> Fluxo de aviso de exames e consultas
+                        </a>
+                    </div>
+                    <ul class="space-y-2 text-gray-700 text-sm">
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> CS é responsável por avisar o usuário.</li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Se não houver telefone, pactuar retornos frequentes.</li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Tentar contato telefônico/WhatsApp.</li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Realizar busca ativa nos locais conhecidos.</li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Em último caso, acionar rede Pop Rua via e-mail padrão.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-orange-50 p-4 rounded-lg">
+                    <h3 class="font-bold text-lg text-orange-800 mb-3">Transporte</h3>
+                    <div class="grid gap-2 text-sm">
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold w-24">Risco de Morte:</span>
+                            <span class="bg-white px-2 py-1 rounded border">SAMU (192)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold w-24">Imediato (UPA):</span>
+                            <span class="bg-white px-2 py-1 rounded border">Logística da SMS</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold w-24">Articulação:</span>
+                            <span class="bg-white px-2 py-1 rounded border">eCR (se logística indisponível)</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-4 border-t border-orange-200 text-center">
+                        <p class="text-gray-700 font-medium text-sm mb-2">Acesse informações detalhadas:</p>
+                        <a href="https://drive.google.com/file/d/1bD1WUjsv9RxliTKS2qfRC-bXXGnz5nrZ/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-4 rounded-full transition-all hover:scale-105 shadow-md text-sm">
+                            <i class="fas fa-file-pdf mr-2"></i> Documento: Transporte de Pacientes
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 7: Cadastro -->
+            <section id="documentos" class="section-card bg-indigo-50">
+                <h2 class="section-title justify-center text-indigo-900">
+                    <i class="fas fa-id-card mr-2"></i>
+                    7. Documentos e Cadastro
+                </h2>
+                
+                <div class="flex justify-center mb-6">
+                    <a href="https://drive.google.com/file/d/1jmCdzcFMh5BJYT9HUAIVmJFwIbFvIV2z/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-full transition-all hover:scale-105 shadow-md text-center">
+                        <i class="fas fa-file-pdf mr-2"></i> Documento: Cadastro da População em Situação de Rua
+                    </a>
+                </div>
+
+                <p class="text-center mb-6 text-indigo-800">O cadastro é o momento oportuno para vincular o usuário à Atenção Primária.</p>
+                
+                <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-white p-4 rounded shadow-sm">
+                        <h4 class="font-bold text-indigo-700 mb-2">Identificação</h4>
+                        <p>O cadastro <strong>pode ser feito sem documentos</strong>. Pergunte como a pessoa deseja ser chamada (Nome Social).</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow-sm">
+                        <h4 class="font-bold text-indigo-700 mb-2">Endereço</h4>
+                        <p>Registre a localização atual ou local de maior permanência (rua e número aproximado).</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow-sm">
+                        <h4 class="font-bold text-indigo-700 mb-2">Telefone</h4>
+                        <p>Registre celular se houver ou número de recado. Caso contrário, pactue formas de comunicação.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded shadow-sm">
+                        <h4 class="font-bold text-indigo-700 mb-2">Sem Documentos?</h4>
+                        <p>Use B.O. para medicação. Oriente sobre emissão de novos documentos. Qualquer maior de 18 anos documentado pode retirar a medicação.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DIVISOR: Teste -->
+            <div class="flex items-center my-10">
+                <div class="flex-grow border-t-2 border-teal-200"></div>
+                <span class="flex-shrink-0 mx-4 text-teal-800 font-bold text-xl uppercase tracking-widest">
+                    <i class="fas fa-check-circle mr-2"></i>Teste Final
+                </span>
+                <div class="flex-grow border-t-2 border-teal-200"></div>
+            </div>
+
+            <!-- SEÇÃO 8: Teste -->
             <section id="curso-livre" class="section-card text-center bg-teal-50 border-t-4 border-teal-500">
                 <h2 class="section-title justify-center text-teal-800">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+                    <i class="fas fa-clipboard-check mr-2"></i>
                     8. Teste de Aproveitamento
                 </h2>
-                <p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto">Após se inscrever e estudar o conteúdo, realize o teste para obter sua certificação. Lembre-se que a nota de corte para aprovação é de 80%.</p>
+                <p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto">Após estudar todo o conteúdo acima, realize o teste para obter sua certificação. A nota de corte para aprovação é de 80%.</p>
                 <div class="flex justify-center">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeFzPHuYs6iMDVOlZjRE4lvfu767Ly741BklMty4vQdi7VYUw/viewform?usp=sharing&ouid=110410574929128285229" target="_blank" rel="noopener noreferrer" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105 inline-block">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeFzPHuYs6iMDVOlZjRE4lvfu767Ly741BklMty4vQdi7VYUw/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105 inline-block shadow-lg">
                         Realizar Teste de Aproveitamento
                     </a>
                 </div>
@@ -448,8 +674,14 @@
         </div>
     </div>
     
+    <!-- Visualizador de Imagem em Tela Cheia (Lightbox) -->
+    <div id="fullscreen-modal" class="fixed inset-0 bg-black/95 z-[100] hidden items-center justify-center p-4 cursor-zoom-out backdrop-blur-sm transition-opacity duration-300 opacity-0" onclick="closeFullscreen()">
+        <img id="fullscreen-img" src="" alt="Visualização em tela cheia" class="max-w-full max-h-full object-contain rounded-md shadow-2xl transform scale-95 transition-transform duration-300">
+        <p class="absolute bottom-10 text-white/80 text-sm font-light pointer-events-none">Clique em qualquer lugar para fechar</p>
+    </div>
+
     <script>
-        // Modal logic
+        // Lógica do Modal de Instruções
         const openModalBtn = document.getElementById('openModalBtn');
         const closeModalBtn = document.getElementById('closeModalBtn');
         const infoModal = document.getElementById('infoModal');
@@ -471,7 +703,7 @@
             }
         });
 
-        // Start course logic
+        // Lógica do Curso
         const startButton = document.getElementById('startButton');
         const startSection = document.getElementById('start-section');
         const courseContent = document.getElementById('course-content');
@@ -482,8 +714,40 @@
             // Smooth scroll to the content after it's visible
             courseContent.scrollIntoView({ behavior: 'smooth' });
         });
+
+        // Lógica de Tela Cheia (Lightbox) para Infográficos
+        const fullscreenModal = document.getElementById('fullscreen-modal');
+        const fullscreenImg = document.getElementById('fullscreen-img');
+
+        function openFullscreen(src) {
+            fullscreenImg.src = src;
+            fullscreenModal.classList.remove('hidden');
+            fullscreenModal.classList.add('flex');
+            
+            // Pequeno delay para permitir a transição de opacidade/escala
+            setTimeout(() => {
+                fullscreenModal.classList.remove('opacity-0');
+                fullscreenImg.classList.remove('scale-95');
+                fullscreenImg.classList.add('scale-100');
+            }, 10);
+            
+            document.body.style.overflow = 'hidden'; // Impede rolagem do fundo
+        }
+
+        function closeFullscreen() {
+            fullscreenModal.classList.add('opacity-0');
+            fullscreenImg.classList.remove('scale-100');
+            fullscreenImg.classList.add('scale-95');
+            
+            setTimeout(() => {
+                fullscreenModal.classList.add('hidden');
+                fullscreenModal.classList.remove('flex');
+                fullscreenImg.src = '';
+            }, 300); // Tempo da transição CSS
+            
+            document.body.style.overflow = ''; // Restaura rolagem
+        }
     </script>
 
 </body>
 </html>
-
