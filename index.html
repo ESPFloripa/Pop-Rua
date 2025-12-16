@@ -201,12 +201,11 @@
                     <ul class="flex items-center space-x-2 md:space-x-4 text-sm font-medium whitespace-nowrap py-2">
                         <li><a href="#acolhimento" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">1. Acolhimento</a></li>
                         <li><a href="#manejo" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">2. Manejo</a></li>
-                        <li><a href="#isolamento" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">3. Isolamento</a></li>
-                        <li><a href="#cnar" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">4. CnaR</a></li>
-                        <li><a href="#rede" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">5. Rede</a></li>
-                        <li><a href="#fluxos" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">6. Fluxos</a></li>
-                        <li><a href="#documentos" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">7. Cadastro</a></li>
-                        <li><a href="#curso-livre" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">8. Teste</a></li>
+                        <li><a href="#cnar" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">3. CnaR</a></li>
+                        <li><a href="#rede" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">4. Rede</a></li>
+                        <li><a href="#fluxos" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">5. Fluxos</a></li>
+                        <li><a href="#documentos" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">6. Cadastro</a></li>
+                        <li><a href="#curso-livre" class="text-gray-600 hover:text-blue-700 p-2 transition-colors">7. Teste</a></li>
                     </ul>
                 </div>
             </div>
@@ -215,41 +214,20 @@
         <!-- Conteúdo Principal -->
         <main class="container mx-auto max-w-5xl p-4 md:p-6">
 
-            <!-- Vídeo Introdutório e Infográficos -->
+            <!-- Vídeo Introdutório -->
             <section class="section-card">
                 <h2 class="section-title">
                     <i class="fas fa-video text-blue-800"></i>
-                    Visão Geral: Assista ao vídeo e veja os Infográficos
+                    Visão Geral: Assista ao vídeo
                 </h2>
                 <div class="video-container mb-8">
                     <iframe 
-                        src="https://www.youtube.com/embed/zjIx67ZtgJk" 
+                        src="https://www.youtube.com/embed/Y6iJaxz1834" 
                         title="YouTube video player" 
                         frameborder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
                     </iframe>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="flex flex-col items-center group">
-                        <h3 class="font-semibold text-gray-700 mb-2">Infográfico 1 <span class="text-xs font-normal text-blue-600">(Clique para ampliar)</span></h3>
-                        <img 
-                            src="https://i.imgur.com/kzhsjVm.png" 
-                            alt="Infográfico 1 - População em Situação de Rua" 
-                            class="w-full rounded-lg shadow-md border hover:scale-105 transition-transform duration-300 cursor-pointer"
-                            onclick="openFullscreen(this.src)"
-                        >
-                    </div>
-                    <div class="flex flex-col items-center group">
-                        <h3 class="font-semibold text-gray-700 mb-2">Infográfico 2 <span class="text-xs font-normal text-blue-600">(Clique para ampliar)</span></h3>
-                        <img 
-                            src="https://i.imgur.com/YtBk0u7.png" 
-                            alt="Infográfico 2 - Orientações de Saúde" 
-                            class="w-full rounded-lg shadow-md border hover:scale-105 transition-transform duration-300 cursor-pointer"
-                            onclick="openFullscreen(this.src)"
-                        >
-                    </div>
                 </div>
 
                 <div class="flex justify-center mt-8">
@@ -291,7 +269,18 @@
                         <p class="text-sm text-gray-600">Maior frequência de problemas nos pés, infestações (escabiose/piolho), tuberculose, ISTs/HIV, gravidez de alto risco, doenças crônicas, saúde mental e uso de álcool/drogas.</p>
                     </div>
                 </div>
-                <p class="text-sm text-gray-500 italic">Nota: O atendimento deve considerar a oferta de testes rápidos e coleta de escarro quando indicado para garantir a integralidade do cuidado.</p>
+                <p class="text-sm text-gray-500 italic mb-6">Nota: O atendimento deve considerar a oferta de testes rápidos e coleta de escarro quando indicado para garantir a integralidade do cuidado.</p>
+
+                <!-- Infográfico 2 (Transferido da Visão Geral) -->
+                <div class="flex flex-col items-center group mt-8 pt-6 border-t border-gray-100">
+                    <h3 class="font-semibold text-gray-700 mb-2">Infográfico: Orientações de Saúde <span class="text-xs font-normal text-blue-600">(Clique para ampliar)</span></h3>
+                    <img 
+                        src="https://i.imgur.com/YtBk0u7.png" 
+                        alt="Infográfico - Orientações de Saúde" 
+                        class="w-full max-w-2xl rounded-lg shadow-md border hover:scale-105 transition-transform duration-300 cursor-pointer"
+                        onclick="openFullscreen(this.src)"
+                    >
+                </div>
             </section>
 
             <!-- SEÇÃO 2: Manejo -->
@@ -310,8 +299,18 @@
                                 <li><strong>Coleta:</strong> Realizar coleta de escarro sempre que houver tosse, independente do tempo.</li>
                                 <li><strong>Investigação:</strong> Realizar teste rápido de HIV (alta prevalência de coinfecção).</li>
                                 <li><strong>Acesso a Abrigos:</strong> Exige resultado negativo de baciloscopia dos últimos 30 dias.</li>
-                                <li><strong>Tratamento:</strong> Em caso de diagnóstico, orientar tratamento com equipe de referência. Se houver abandono, discutir com a Equipe do Consultório na Rua (eCR).</li>
+                                <li><strong>Tratamento:</strong> Em caso de diagnóstico, o tratamento deve ser feito pela equipe de referência. Lembre-se que o tratamento diretamente observado (TDO) é uma ferramenta útil para facilitar a adesão do usuário, e pode ser realizada por qualquer profissional de saúde (veja o infográfico abaixo). Se ainda assim houver dificuldade de adesão, discuta o caso com a equipe do Consultório na Rua. Ao solicitar busca ativa, descrever em prontuário aparência do usuário, características que facilitem sua identificação e descrição do local onde costuma ficar.</li>
                             </ul>
+                            
+                            <div class="mt-4 flex flex-col items-center group">
+                                <h4 class="font-semibold text-gray-700 mb-2 text-sm">Infográfico: Tratamento Diretamente Observado (TDO) <span class="text-xs font-normal text-blue-600">(Clique para ampliar)</span></h4>
+                                <img 
+                                    src="https://i.imgur.com/uu9KYCj.png" 
+                                    alt="Infográfico TDO" 
+                                    class="w-full max-w-lg rounded-lg shadow-md border hover:scale-105 transition-transform duration-300 cursor-pointer"
+                                    onclick="openFullscreen(this.src)"
+                                >
+                            </div>
                         </div>
                     </details>
 
@@ -380,41 +379,25 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO 3: Isolamento -->
-            <section id="isolamento" class="section-card border-l-4 border-red-400">
-                <h2 class="section-title text-red-700">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    3. Isolamento
-                </h2>
-                <p class="mb-4">Necessário em situações de doenças infectocontagiosas, especialmente Tuberculose.</p>
-                
-                <div class="grid gap-4 md:grid-cols-3">
-                    <div class="bg-red-50 p-4 rounded text-center">
-                        <i class="fas fa-head-side-mask text-3xl text-red-400 mb-2"></i>
-                        <h3 class="font-bold text-red-800">Prevenção</h3>
-                        <p class="text-sm text-red-700">Orientar sobre isolamento social e uso de máscara durante período de transmissão.</p>
-                    </div>
-                    <div class="bg-red-50 p-4 rounded text-center">
-                        <i class="fas fa-file-medical text-3xl text-red-400 mb-2"></i>
-                        <h3 class="font-bold text-red-800">Abrigos</h3>
-                        <p class="text-sm text-red-700">Exigem baciloscopia negativa dos últimos 30 dias para entrada.</p>
-                    </div>
-                    <div class="bg-red-50 p-4 rounded text-center">
-                        <i class="fas fa-bed text-3xl text-red-400 mb-2"></i>
-                        <h3 class="font-bold text-red-800">Centro POP</h3>
-                        <p class="text-sm text-red-700">Deve ser buscado para direcionamento a serviços com local adequado para isolamento.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SEÇÃO 4: CnaR -->
+            <!-- SEÇÃO 3: CnaR (Anteriormente Seção 4) -->
             <section id="cnar" class="section-card">
                 <h2 class="section-title">
                     <i class="fas fa-ambulance text-teal-600"></i>
-                    4. Consultório na Rua (CnaR)
+                    3. Consultório na Rua (CnaR)
                 </h2>
                 <p class="mb-4">Equipes itinerantes de Atenção Básica que atuam em ruas, praças e espaços públicos, compostas por médicos, enfermeiras, assistente social, psicóloga e técnicos.</p>
                 
+                <!-- Vídeo do CnaR -->
+                <div class="video-container mb-6 max-w-sm mx-auto shadow-lg rounded-lg overflow-hidden">
+                    <iframe 
+                        src="https://www.youtube.com/embed/jFln6VuqPF4" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
                 <h3 class="font-bold text-lg mb-2 text-teal-800">Ações Realizadas</h3>
                 <div class="flex flex-wrap gap-2 mb-6">
                     <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm">Busca Ativa</span>
@@ -464,14 +447,17 @@
                                 <p class="text-sm opacity-90">(Passe o mouse)</p>
                             </div>
                             <div class="flip-card-back bg-blue-50 p-6">
-                                <h3 class="font-bold text-blue-900 text-lg mb-3">Contato:</h3>
-                                <p class="text-sm mb-4"><strong>E-mail ou Telefone</strong> (Resposta até 72h).</p>
-                                <p class="font-semibold text-sm mb-2">Informações necessárias no e-mail:</p>
-                                <ul class="list-disc list-inside space-y-1 text-sm text-gray-700">
-                                    <li>Nome completo e apelido.</li>
-                                    <li>Data de nascimento e nome da mãe.</li>
-                                    <li>Características físicas.</li>
-                                    <li>Locais de circulação.</li>
+                                <h3 class="font-bold text-blue-900 text-lg mb-3">Contatos:</h3>
+                                <div class="text-sm space-y-2 mb-3 text-gray-800">
+                                    <p><strong>E-mail:</strong><br> <a href="mailto:consultorionaruafloripa@gmail.com" class="text-blue-700 underline break-all">consultorionaruafloripa@gmail.com</a></p>
+                                    <p><strong>Equipe 133:</strong> <a href="tel:48988430123" class="text-blue-700 hover:underline">(48) 98843-0123</a></p>
+                                    <p><strong>Equipe 135:</strong> <a href="tel:48920049008" class="text-blue-700 hover:underline">(48) 92004-9008</a></p>
+                                </div>
+                                <p class="font-semibold text-sm mb-1 mt-4">Informações necessárias no e-mail:</p>
+                                <ul class="list-disc list-inside space-y-1 text-xs text-gray-700">
+                                    <li>Nome completo, apelido e data nasc.</li>
+                                    <li>Nome da mãe.</li>
+                                    <li>Características físicas e locais.</li>
                                     <li>Descrição detalhada da demanda.</li>
                                 </ul>
                             </div>
@@ -480,51 +466,97 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO 5: Rede Socioassistencial -->
+            <!-- SEÇÃO 4: Rede Socioassistencial (Anteriormente Seção 5) -->
             <section id="rede" class="section-card">
                 <h2 class="section-title">
                     <i class="fas fa-network-wired text-purple-600"></i>
-                    5. Rede Socioassistencial
+                    4. Rede Socioassistencial
                 </h2>
                 <div class="space-y-4">
                     <details>
                         <summary>Centro POP</summary>
-                        <div class="p-4 bg-purple-50 rounded-b text-gray-700">
-                            <p>Oferece atendimento socioassistencial, apoio para documentos, benefícios sociais, CadÚnico e encaminhamento para abrigos. Acesso por demanda espontânea ou encaminhamento.</p>
+                        <div class="p-4 bg-purple-50 rounded-b text-gray-700 text-sm">
+                            <p class="mb-2">Serviço de atendimento às demandas socioassistenciais da população em situação de rua. É composto por equipe multidisciplinar (assistentes sociais, psicólogos/as e educadores sociais).</p>
+                            <p class="mb-4">O Centro POP oferece atendimento e acompanhamento socioassistencial para projetos de vida, processo de saída das ruas, apoio à regularização de documentos pessoais, orientação para acesso a benefícios e direitos, registro junto ao CadÚnico, encaminhamento às vagas para os serviços de acolhimento institucional (abrigos) do município e encaminhamentos em geral.</p>
+                            
+                            <ul class="space-y-1 border-t border-purple-200 pt-3">
+                                <li><strong>Endereço:</strong> Rua General Bittencourt, 239, Centro.</li>
+                                <li><strong>Telefone:</strong> (48) 4042-3944 | (48) 99200-9941 (apenas WhatsApp).</li>
+                                <li><strong>E-mail:</strong> <a href="mailto:cpoptecnicos@gmail.com" class="text-purple-700 underline">cpoptecnicos@gmail.com</a></li>
+                                <li><strong>Funcionamento:</strong> de 2ª a 6ª feiras, das 8h às 17h para atendimentos externos; e até às 18h para demandas internas.</li>
+                            </ul>
                         </div>
                     </details>
                     
                     <details>
-                        <summary>Serviço de Abordagem Social</summary>
-                        <div class="p-4 bg-purple-50 rounded-b text-gray-700">
-                            <p>Atua <em>in loco</em> nas regiões de maior concentração, oferecendo encaminhamento para a rede.</p>
+                        <summary>Equipe de Sensibilização (Antiga Abordagem Social)</summary>
+                        <div class="p-4 bg-purple-50 rounded-b text-gray-700 text-sm">
+                            <p class="mb-4">Serviço de abordagem social da população em situação de rua <em>in loco</em>, nas regiões do município onde há maior concentração do público (Centro, Norte e Leste), com o objetivo de ofertar encaminhamento para a rede socioassistencial da cidade (serviço público indireto, conveniado com a SEMAS/PMF).</p>
+                            
+                            <ul class="space-y-1 border-t border-purple-200 pt-3">
+                                <li><strong>Endereço:</strong> Praça Fernando Machado, 17, Centro.</li>
+                                <li><strong>Funcionamento:</strong> de 2ª a 6ª feiras, das 8h às 18h.</li>
+                                <li class="text-gray-500 italic">Sem contato telefônico/e-mail.</li>
+                            </ul>
                         </div>
                     </details>
                     
                     <details>
                         <summary>Abrigos Municipais (24h)</summary>
-                        <div class="p-4 bg-purple-50 rounded-b text-gray-700">
-                            <p>Incluem: <strong>Casa de Apoio (Continente e Centro)</strong> e <strong>Casa de Passagem</strong>.</p>
-                            <p class="text-sm mt-2 text-red-600 font-bold">*Todos exigem baciloscopia negativa dos últimos 30 dias.</p>
+                        <div class="p-4 bg-purple-50 rounded-b text-gray-700 text-sm">
+                            <p class="mb-2">Incluem: <strong>Casa de Apoio (Continente e Centro)</strong> e <strong>Casa de Passagem</strong>.</p>
+                            <div class="bg-white p-3 rounded border-l-4 border-purple-400">
+                                <p><strong>Forma de acesso:</strong> Encaminhamento via Centro POP.</p>
+                                <p class="text-xs mt-1 text-red-600">*Todos exigem baciloscopia negativa dos últimos 30 dias.</p>
+                            </div>
                         </div>
                     </details>
 
                     <details>
                         <summary>Passarela da Cidadania</summary>
-                        <div class="p-4 bg-purple-50 rounded-b text-gray-700">
-                            <p>Oferece pernoite, alimentação, higiene, lavanderia e cursos. Conta com equipe multiprofissional e serviço ambulatorial de saúde.</p>
+                        <div class="p-4 bg-purple-50 rounded-b text-gray-700 text-sm">
+                            <p class="mb-3">É um equipamento conveniado da Assistência Social que oferece acesso a necessidades básicas (alimentação, higiene pessoal, lavanderia e pernoite) e atividades ocupacionais/cursos profissionalizantes (teatro, biblioteca, informática, etc.).</p>
+                            <p class="mb-3">Conta com equipe multiprofissional (assistentes sociais, psicólogos, educadores sociais) e um <strong>serviço de atendimento ambulatorial de atenção à saúde</strong> e avaliação para internações involuntárias (enfermeiros, técnicos, médicos e farmacêutico).</p>
+                            
+                            <ul class="space-y-1 mb-4">
+                                <li><strong>Endereço:</strong> Av. Gustavo Richard, 5000 - Centro (Passarela Nego Quirido).</li>
+                                <li><strong>Telefone:</strong> (48) 99804-3846.</li>
+                                <li><strong>E-mails:</strong> rumocerto.enfermagem@gmail.com, tecnico.rumocerto@gmail.com, coordenacao.tecnicapdc@gmail.com.</li>
+                                <li><strong>Funcionamento:</strong> 24h/dia, 7 dias/semana (atividades em horário comercial).</li>
+                            </ul>
+
+                            <div class="bg-white p-3 rounded shadow-sm">
+                                <h4 class="font-bold text-purple-800 mb-2 border-b border-purple-100 pb-1">Sobre o Pernoite</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li><strong>Público:</strong> Homens e mulheres (> 18 anos).</li>
+                                    <li><strong>Vagas:</strong> 250 vagas.</li>
+                                    <li><strong>Acesso:</strong> Prioritária aos participantes das atividades diárias e por fila (demanda espontânea) na abertura do portão ao final da tarde.</li>
+                                </ul>
+                                <p class="text-xs text-gray-500 mt-2 italic">*Não oferta mais vagas para abrigamento permanente (apenas pernoite).</p>
+                            </div>
                         </div>
                     </details>
 
                     <details>
                         <summary>Outros Equipamentos</summary>
-                        <div class="p-4 bg-purple-50 rounded-b text-gray-700">
-                            <ul class="list-disc list-inside">
+                        <div class="p-4 bg-purple-50 rounded-b text-gray-700 text-sm">
+                            <ul class="list-disc list-inside mb-2">
                                 <li><strong>Albergue Noturno Manuel Galdino Vieira:</strong> Pernoite, banho e refeições.</li>
                                 <li><strong>Hotel 2S:</strong> Abrigo emergencial para mulheres com crianças.</li>
                             </ul>
+                            <p class="font-semibold text-purple-800 mt-2">Acesso: Encaminhamento via Centro POP.</p>
                         </div>
                     </details>
+                </div>
+
+                <div class="mt-8 flex flex-col items-center group">
+                    <h3 class="font-semibold text-gray-700 mb-2">Infográfico: Rede Socioassistencial <span class="text-xs font-normal text-purple-600">(Clique para ampliar)</span></h3>
+                    <img 
+                        src="https://i.imgur.com/hsMNlkS.png" 
+                        alt="Infográfico Rede Socioassistencial" 
+                        class="w-full max-w-2xl rounded-lg shadow-md border hover:scale-105 transition-transform duration-300 cursor-pointer"
+                        onclick="openFullscreen(this.src)"
+                    >
                 </div>
 
                 <div class="mt-8 text-center">
@@ -535,47 +567,69 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO 6: Fluxos -->
+            <!-- SEÇÃO 5: Fluxos (Anteriormente Seção 6) -->
             <section id="fluxos" class="section-card">
                 <h2 class="section-title">
                     <i class="fas fa-exchange-alt text-orange-500"></i>
-                    6. Fluxos de Exames, Consultas e Transporte
+                    5. Fluxos de Exames, Consultas e Transporte
                 </h2>
                 
-                <div class="mb-6">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
+                <div class="mb-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
                         <h3 class="font-bold text-lg text-gray-800">Exames e Consultas</h3>
                         <a href="https://drive.google.com/file/d/1k2o4cKBfH-YBH0wYEWU8n6pUJ8KDAA5o/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2 px-4 rounded-full transition-all hover:scale-105 shadow-md text-center">
                             <i class="fas fa-file-pdf mr-2"></i> Fluxo de aviso de exames e consultas
                         </a>
                     </div>
-                    <ul class="space-y-2 text-gray-700 text-sm">
-                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> CS é responsável por avisar o usuário.</li>
-                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Se não houver telefone, pactuar retornos frequentes.</li>
-                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Tentar contato telefônico/WhatsApp.</li>
-                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Realizar busca ativa nos locais conhecidos.</li>
-                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2"></i> Em último caso, acionar rede Pop Rua via e-mail padrão.</li>
+                    
+                    <ul class="space-y-3 text-gray-700 text-sm mb-6">
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2 flex-shrink-0"></i> CS é responsável por avisar o usuário.</li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2 flex-shrink-0"></i> Se não houver telefone, pactuar retornos frequentes.</li>
+                        <li class="flex items-start"><i class="fas fa-check text-green-500 mt-1 mr-2 flex-shrink-0"></i> Tentar contato telefônico/WhatsApp e realizar busca ativa nos locais conhecidos.</li>
+                        <li class="flex items-start bg-indigo-50 p-3 rounded-lg border-l-4 border-indigo-500">
+                            <i class="fas fa-info-circle text-indigo-500 mt-1 mr-2 flex-shrink-0"></i> 
+                            <span>
+                                Quando todos os meios de contato da equipe do CS forem esgotados, o CS deve acionar os serviços da rede de atendimento à pop rua (dentre eles o Consultório na Rua), por meio dos e-mails institucionais indicados, utilizando o modelo padrão de comunicação para apoio na busca ativa em todo o território municipal. Os e-mails institucionais e o e-mail padrão estão disponíveis no documento “Fluxo de aviso de exames e consultas”.
+                            </span>
+                        </li>
                     </ul>
+
+                    <div class="flex flex-col items-center group mb-6">
+                        <h4 class="font-semibold text-gray-700 mb-2 text-sm">Infográfico: Fluxo de Aviso de Exame <span class="text-xs font-normal text-blue-600">(Clique para ampliar)</span></h4>
+                        <img 
+                            src="https://i.imgur.com/1FDin04.png" 
+                            alt="Infográfico Fluxo Aviso Exame" 
+                            class="w-full max-w-lg rounded-lg shadow-md border hover:scale-105 transition-transform duration-300 cursor-pointer"
+                            onclick="openFullscreen(this.src)"
+                        >
+                    </div>
                 </div>
 
-                <div class="bg-orange-50 p-4 rounded-lg">
-                    <h3 class="font-bold text-lg text-orange-800 mb-3">Transporte</h3>
-                    <div class="grid gap-2 text-sm">
-                        <div class="flex items-center gap-2">
-                            <span class="font-bold w-24">Risco de Morte:</span>
-                            <span class="bg-white px-2 py-1 rounded border">SAMU (192)</span>
+                <div class="bg-orange-50 p-5 rounded-lg">
+                    <h3 class="font-bold text-lg text-orange-800 mb-4 flex items-center"><i class="fas fa-bus mr-2"></i> Transporte</h3>
+                    
+                    <div class="space-y-4 text-sm text-gray-800">
+                        <!-- Item 1 -->
+                        <div class="bg-white p-3 rounded border-l-4 border-red-500 shadow-sm">
+                            <p class="font-bold text-red-700 mb-1">Risco Iminente de Morte</p>
+                            <p>Acionar o <strong>SAMU (192)</strong>.</p>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <span class="font-bold w-24">Imediato (UPA):</span>
-                            <span class="bg-white px-2 py-1 rounded border">Logística da SMS</span>
+
+                        <!-- Item 2 -->
+                        <div class="bg-white p-3 rounded border-l-4 border-orange-400 shadow-sm">
+                            <p class="font-bold text-orange-700 mb-1">Transporte Imediato (ex: UPA)</p>
+                            <p>O CS deve acionar o setor de logística da SMS ou o transporte intradiário (<a href="http://bit.ly/Escalaintradiario" target="_blank" class="text-blue-600 underline font-mono">bit.ly/Escalaintradiario</a>).</p>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <span class="font-bold w-24">Articulação:</span>
-                            <span class="bg-white px-2 py-1 rounded border">eCR (se logística indisponível)</span>
+
+                        <!-- Item 3 -->
+                        <div class="bg-white p-3 rounded border-l-4 border-blue-400 shadow-sm">
+                            <p class="font-bold text-blue-700 mb-1">Apoio para Exames e Consultas</p>
+                            <p class="mb-2">Quando pessoas em situação de rua não puderem se deslocar por meios próprios (Passe Livre ou outra alternativa), a eSF deve acionar a logística da SMS <strong>(48) 3239-1520</strong>.</p>
+                            <p class="text-gray-600 italic">Na indisponibilidade da logística, deverá ser acionada a Equipe do Consultório na Rua para articulação do transporte, a depender da disponibilidade da equipe.</p>
                         </div>
                     </div>
 
-                    <div class="mt-4 pt-4 border-t border-orange-200 text-center">
+                    <div class="mt-6 pt-4 border-t border-orange-200 text-center">
                         <p class="text-gray-700 font-medium text-sm mb-2">Acesse informações detalhadas:</p>
                         <a href="https://drive.google.com/file/d/1bD1WUjsv9RxliTKS2qfRC-bXXGnz5nrZ/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-4 rounded-full transition-all hover:scale-105 shadow-md text-sm">
                             <i class="fas fa-file-pdf mr-2"></i> Documento: Transporte de Pacientes
@@ -584,11 +638,11 @@
                 </div>
             </section>
 
-            <!-- SEÇÃO 7: Cadastro -->
+            <!-- SEÇÃO 6: Cadastro (Anteriormente Seção 7) -->
             <section id="documentos" class="section-card bg-indigo-50">
                 <h2 class="section-title justify-center text-indigo-900">
                     <i class="fas fa-id-card mr-2"></i>
-                    7. Documentos e Cadastro
+                    6. Documentos e Cadastro
                 </h2>
                 
                 <div class="flex justify-center mb-6">
@@ -597,25 +651,82 @@
                     </a>
                 </div>
 
-                <p class="text-center mb-6 text-indigo-800">O cadastro é o momento oportuno para vincular o usuário à Atenção Primária.</p>
+                <p class="text-center mb-8 text-indigo-800 font-medium">O cadastro é o momento oportuno para vincular o usuário à Atenção Primária.</p>
                 
-                <div class="grid md:grid-cols-2 gap-4 text-sm">
-                    <div class="bg-white p-4 rounded shadow-sm">
-                        <h4 class="font-bold text-indigo-700 mb-2">Identificação</h4>
-                        <p>O cadastro <strong>pode ser feito sem documentos</strong>. Pergunte como a pessoa deseja ser chamada (Nome Social).</p>
+                <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-700">
+                    
+                    <!-- Identificação -->
+                    <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-indigo-400">
+                        <h4 class="font-bold text-indigo-700 mb-3 text-lg"><i class="fas fa-user-check mr-2"></i>Identificação</h4>
+                        <p class="mb-2">É importante selecionar que está em situação de rua no campo estruturado disponível no Prontuário Eletrônico do Celk na <strong>tela 394</strong>: “cadastro do usuário/cidadão”.</p>
+                        <div class="bg-indigo-50 p-3 rounded text-indigo-900 text-xs font-semibold">
+                            <i class="fas fa-info-circle mr-1"></i> Basta selecionar "SIM" na pergunta “Está em situação de rua?”.
+                        </div>
+                        <p class="mt-2 text-gray-500 italic text-xs">Não é necessário preencher as demais perguntas deste item para evitar constrangimentos na recepção.</p>
                     </div>
-                    <div class="bg-white p-4 rounded shadow-sm">
-                        <h4 class="font-bold text-indigo-700 mb-2">Endereço</h4>
-                        <p>Registre a localização atual ou local de maior permanência (rua e número aproximado).</p>
+
+                    <!-- Endereço -->
+                    <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-indigo-400">
+                        <h4 class="font-bold text-indigo-700 mb-3 text-lg"><i class="fas fa-map-marker-alt mr-2"></i>Endereço</h4>
+                        <p class="mb-3">Pergunte a localização atual ou de maior permanência do/a usuário/a.</p>
+                        <ul class="space-y-2">
+                            <li><strong>Campo "Logradouro":</strong> Descreva a rua e número aproximado.</li>
+                            <li><strong>Campo "Observações":</strong> Descreva referências da localização atual.</li>
+                        </ul>
                     </div>
-                    <div class="bg-white p-4 rounded shadow-sm">
-                        <h4 class="font-bold text-indigo-700 mb-2">Telefone</h4>
-                        <p>Registre celular se houver ou número de recado. Caso contrário, pactue formas de comunicação.</p>
+
+                    <!-- Forma de Contato (Antigo Telefone) -->
+                    <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-indigo-400 md:col-span-2">
+                        <h4 class="font-bold text-indigo-700 mb-3 text-lg"><i class="fas fa-phone-alt mr-2"></i>Forma de Contato</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-mobile-alt mt-1 mr-2 text-indigo-500"></i>
+                                <span>Pergunte se possui celular e descreva no campo <strong>"Celular"</strong>. Caso não possua, questione se há outro número para recado e use o mesmo campo.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-calendar-check mt-1 mr-2 text-indigo-500"></i>
+                                <span><strong>Sem meios de comunicação?</strong> Pactue outras formas de contato (ex: retornos diários/semanais ao CS se agendamento for rápido, ou mensalmente se demorado).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-search-location mt-1 mr-2 text-indigo-500"></i>
+                                <span>Caso não encontre o usuário para avisar sobre agendamentos externos, acesse o documento com fluxo de contatos na pasta "População em situação de rua" no drive Gestão da clínica.</span>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="bg-white p-4 rounded shadow-sm">
-                        <h4 class="font-bold text-indigo-700 mb-2">Sem Documentos?</h4>
-                        <p>Use B.O. para medicação. Oriente sobre emissão de novos documentos. Qualquer maior de 18 anos documentado pode retirar a medicação.</p>
+
+                    <!-- Vincule à Equipe Correta (Novo Item Detalhado) -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border-t-4 border-indigo-600 md:col-span-2">
+                        <h4 class="font-bold text-indigo-800 mb-4 text-xl text-center"><i class="fas fa-users mr-2"></i>Vincule à Equipe Correta</h4>
+                        
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <!-- Coluna 1 -->
+                            <div>
+                                <h5 class="font-bold text-indigo-600 mb-2 border-b border-indigo-100 pb-1">Abrindo Cadastro</h5>
+                                <p class="mb-2">Informe como <strong>“Equipe de Acompanhamento”</strong> a equipe do CS que fará o primeiro atendimento.</p>
+                                <p class="text-xs text-gray-500">Lembre-se: cada atendimento é uma oportunidade de vincular a pessoa à uma equipe de referência.</p>
+                            </div>
+
+                            <!-- Coluna 2 -->
+                            <div>
+                                <h5 class="font-bold text-indigo-600 mb-2 border-b border-indigo-100 pb-1">Usuário já cadastrado</h5>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li>Ofereça o atendimento do dia.</li>
+                                    <li>Ao final, ofereça mudança de vinculação.</li>
+                                    <li>Decida com a pessoa a melhor equipe (considerando vínculo prévio e local de permanência).</li>
+                                    <li>Se mudar, atualize o campo “Equipe de Acompanhamento”.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Coluna 3 -->
+                            <div>
+                                <h5 class="font-bold text-indigo-600 mb-2 border-b border-indigo-100 pb-1">Pessoa Abrigada</h5>
+                                <p class="mb-2">Segue a lógica de domiciliados. O endereço deve ser o do abrigo (Passarela, Albergue).</p>
+                                <p class="mb-2">Preferencialmente acompanhado pela equipe de referência do território.</p>
+                                <p class="text-xs text-gray-500 italic">Independente da equipe, ofereça escuta e considere o desejo do usuário na troca de vinculação.</p>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </section>
 
@@ -628,11 +739,11 @@
                 <div class="flex-grow border-t-2 border-teal-200"></div>
             </div>
 
-            <!-- SEÇÃO 8: Teste -->
+            <!-- SEÇÃO 7: Teste (Anteriormente Seção 8) -->
             <section id="curso-livre" class="section-card text-center bg-teal-50 border-t-4 border-teal-500">
                 <h2 class="section-title justify-center text-teal-800">
                     <i class="fas fa-clipboard-check mr-2"></i>
-                    8. Teste de Aproveitamento
+                    7. Teste de Aproveitamento
                 </h2>
                 <p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto">Após estudar todo o conteúdo acima, realize o teste para obter sua certificação. A nota de corte para aprovação é de 80%.</p>
                 <div class="flex justify-center">
